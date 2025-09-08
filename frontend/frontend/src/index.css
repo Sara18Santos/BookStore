@@ -1,0 +1,7 @@
+@import "tailwindcss/preflight";
+
+@layer base {
+  body {
+    font-family: 'Satoshi', sans-serif;
+  }
+}
