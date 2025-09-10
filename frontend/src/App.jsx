@@ -1,16 +1,20 @@
-import React from "react";
+import React from 'react'
+import {Routes, Route} from 'react-router-dom'
+import Home from './pages/home.jsx';
+import CreateBook from './pages/CreateBook.jsx';
+import ShowBook from './pages/ShowBook.jsx';
+import EditBook from './pages/EditBook.jsx';
 
-
-function App() {
-  
-
-return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <h1 className="text-4xl font-bold text-blue-600">
-        teste! 🚀
-      </h1>
-    </div>
-  );
+const App = () => {
+  return (
+    <Routes>
+      <Route path='/' element={<Home/>} />
+      <Route path='/books/create' element={<CreateBook/>} />
+      <Route path='/books/details/:id' element={<ShowBook/>} />
+      <Route path='/books/edit/:id' element={<EditBook/>} />
+      <Route path='/books/delete/:id' element={<DeleteBook/>} />
+    </Routes>
+  )
 }
 
 export default App
