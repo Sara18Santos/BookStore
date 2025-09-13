@@ -12,11 +12,7 @@ const CreateBook = () => {
     const navigate = useNavigate();
 
     const handleSaveBook = () => {
-        const data = {
-            title,
-            author,
-            publishYear,
-        };
+        const data = { title, author, publishYear };
         setLoading(true);
         axios
             .post('http://localhost:5001/books', data)
@@ -32,48 +28,71 @@ const CreateBook = () => {
     };
 
     return (
-        <div className='p-6 bg-gray-100 min-h-screen'> {/* Adicionado um fundo e um espaçamento maior */}
+        <div className="min-h-screen p-6 bg-base-200">
             <BackButton />
-            <div className='flex justify-center items-center h-full'> {/* Centraliza o conteúdo vertical e horizontalmente */}
-                <div className='w-full max-w-xl mx-auto p-8 bg-white rounded-lg shadow-lg border border-gray-200'> {/* Box principal com sombra e borda mais suave */}
-                    <h1 className='text-4xl font-bold text-center text-gray-800 mb-8'>Criar Livro</h1> {/* Título com maior destaque */}
-                    {loading && <Spinner />}
-                    <form className='space-y-6'> {/* Utilizado `space-y` para espaçamento automático entre os campos */}
-                        <div>
-                            <label className='block text-lg font-medium text-gray-700 mb-1'>Título</label>
-                            <input
-                                type='text'
-                                value={title}
-                                onChange={(e) => setTitle(e.target.value)}
-                                className='mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-sky-500 focus:border-sky-500 transition duration-300 ease-in-out' // Transição para um efeito de foco mais suave
-                            />
-                        </div>
-                        <div>
-                            <label className='block text-lg font-medium text-gray-700 mb-1'>Autor</label>
-                            <input
-                                type='text'
-                                value={author}
-                                onChange={(e) => setAuthor(e.target.value)}
-                                className='mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-sky-500 focus:border-sky-500 transition duration-300 ease-in-out'
-                            />
-                        </div>
-                        <div>
-                            <label className='block text-lg font-medium text-gray-700 mb-1'>Ano de Publicação</label>
-                            <input
-                                type='number' // Alterado para tipo "number" para validação de entrada
-                                value={publishYear}
-                                onChange={(e) => setPublishYear(e.target.value)}
-                                className='mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-sky-500 focus:border-sky-500 transition duration-300 ease-in-out'
-                            />
-                        </div>
-                        <button
-                            type='button'
-                            onClick={handleSaveBook}
-                            className='w-full py-3 bg-sky-600 text-white font-semibold rounded-md shadow-md hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 transition duration-300 ease-in-out' // Botão com estilo mais profissional e interativo
-                        >
-                            Salvar Livro
-                        </button>
-                    </form>
+            <div className="flex justify-center items-center h-full">
+                <div className="card w-full max-w-xl bg-base-100 shadow-xl">
+                    <div className="card-body">
+                        <h1 className="card-title justify-center text-3xl">Create Book</h1>
+
+                        {loading && <Spinner />}
+
+                        <form className="form-control gap-4">
+                            {/* Título */}
+                            <div>
+                                <label className="label">
+                                    <span className="label-text">Title</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    value={title}
+                                    onChange={(e) => setTitle(e.target.value)}
+                                    placeholder="Insert title"
+                                    className="input input-bordered w-full"
+                                />
+                            </div>
+
+                            {/* Autor */}
+                            <div>
+                                <label className="label">
+                                    <span className="label-text">Author</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    value={author}
+                                    onChange={(e) => setAuthor(e.target.value)}
+                                    placeholder="Insert author"
+                                    className="input input-bordered w-full"
+                                />
+                            </div>
+
+                            {/* Ano de Publicação */}
+                            <div>
+                                <label className="label">
+                                    <span className="label-text">Publish Year</span>
+                                </label>
+                                <input
+                                    type="number"
+                                    value={publishYear}
+                                    onChange={(e) => setPublishYear(e.target.value)}
+                                    placeholder="Insert year"
+                                    className="input input-bordered w-full"
+                                />
+                            </div>
+
+                            {/* Botões */}
+                            <div className="card-actions justify-end mt-4">
+                                <button
+                                    type="button"
+                                    onClick={handleSaveBook}
+                                    className="btn btn-primary w-full"
+                                >
+                                    Save Book
+                                </button>
+                                
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

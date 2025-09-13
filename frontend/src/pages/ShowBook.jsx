@@ -1,65 +1,76 @@
-import React, {useState, useEffect} from 'react';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
-import BackButton from '../components/backButton';
-import Spinner from '../components/spinner';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import BackButton from "../components/backButton";
+import Spinner from "../components/spinner";
 
 const ShowBook = () => {
     const [book, setBook] = useState({});
-    const [loading, setLoading] = useState({});
-    const {id} = useParams({});
+    const [loading, setLoading] = useState(false);
+    const { id } = useParams();
 
-    useEffect(() =>{
+    useEffect(() => {
         setLoading(true);
         axios
             .get(`http://localhost:5001/books/${id}`)
-            .then((response) =>{
+            .then((response) => {
                 setBook(response.data);
                 setLoading(false);
             })
             .catch((error) => {
-                console.log(error)
+                console.log(error);
                 setLoading(false);
             });
-    }, [id])
+    }, [id]);
 
     return (
-        <div className='p-4'>
-            <BackButton/>
-            <h1 className='text-3xl my-4'>Show Book</h1>
-            {loading? (
-                <Spinner/>
-            ): (
-                <div className='flex flex-col border-2 border-sky-400 rounded-xl'>
-                    <div className='my-4'>
-                        <span className='text-xl mr-4 text-gray-500'>Id</span>
-                        <span>{book._id}</span>
-                    </div>
-                    <div className='my-4'>
-                        <span className='text-xl mr-4 text-gray-500'>Title</span>
-                        <span>{book.title}</span>
-                    </div>
-                    <div className='my-4'>
-                        <span className='text-xl mr-4 text-gray-500'>Author</span>
-                        <span>{book.author}</span>
-                    </div>
-                    <div className='my-4'>
-                        <span className='text-xl mr-4 text-gray-500'>Publish Year</span>
-                        <span>{book.publishYear}</span>
-                    </div>
-                    <div className='my-4'>
-                        <span className='text-xl mr-4 text-gray-500'>Create Time</span>
-                        <span>{new Date(book.createdAt).toString()}</span>
-                    </div>
-                    <div className='my-4'>
-                        <span className='text-xl mr-4 text-gray-500'>Last Update Time</span>
-                        <span>{new Date(book.updatedAt).toString()}</span>
-                    </div>
+        <div className="min-h-screen p-6 bg-base-200">
+            <BackButton />
 
+            {loading ? (
+                <Spinner />
+            ) : (
+                <div className="card w-full bg-base-100 shadow-xl mx-auto">
+                    <div className="card-body">
+                        {/* Card Header */}
+                        <h2 className="card-title text-2xl justify-center">
+                            📖 {book.title || "Untitled Book"}
+                        </h2>
+
+                        {/* Card Content */}
+                        <div className="divider">Details</div>
+                        <div className="space-y-2">
+                            <p>
+                                <span className="font-semibold">ID:</span> {book._id}
+                            </p>
+                            <p>
+                                <span className="font-semibold">Title:</span> {book.title}
+                            </p>
+                            <p>
+                                <span className="font-semibold">Author:</span> {book.author}
+                            </p>
+                            <p>
+                                <span className="font-semibold">Publish Year:</span>{" "}
+                                {book.publishYear}
+                            </p>
+                            <p>
+                                <span className="font-semibold">Created at:</span>{" "}
+                                {book.createdAt
+                                    ? new Date(book.createdAt).toLocaleString()
+                                    : "-"}
+                            </p>
+                            <p>
+                                <span className="font-semibold">Last Update:</span>{" "}
+                                {book.updatedAt
+                                    ? new Date(book.updatedAt).toLocaleString()
+                                    : "-"}
+                            </p>
+                        </div>
+                    </div>
                 </div>
             )}
         </div>
-    )
-    }
+    );
+};
 
-export default ShowBook
+export default ShowBook;
