@@ -8,12 +8,6 @@
 
 ---
 
-## 🏠 Homepage
-
-[Home.jsx](./frontend/src/pages/Home.jsx)
-
----
-
 ## 🚀 Tecnologias
 
 ### 🔹 Frontend
