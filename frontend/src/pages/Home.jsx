@@ -45,7 +45,7 @@ const Home = () => {
                                 <th>Title</th>
                                 <th className="max-md:hidden">Author</th>
                                 <th className="max-md:hidden">Publish Year</th>
-                                <th>Actions</th>
+                                <th className="text-left pl-6 ">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -55,8 +55,8 @@ const Home = () => {
                                     <td>{book.title}</td>
                                     <td className="max-md:hidden">{book.author}</td>
                                     <td className="max-md:hidden">{book.publishYear}</td>
-                                    <td>
-                                        <div className="flex gap-2 justify-center">
+                                    <td className="align-middle">
+                                        <div className="flex gap-2 justify-start pl-4">
                                             <Link
                                                 to={`/books/details/${book._id}`}
                                                 className="btn btn-info btn-xs"
