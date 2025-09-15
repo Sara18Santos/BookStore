@@ -1,7 +1,5 @@
 # Welcome to Book Store 👋
 
-### 🏠 [Homepage](Home.jsx)
-
 # 📚 Welcome to Book Store 👋
 
 > Um projeto MERN Stack simples para gestão de livros, onde é possível **adicionar**, **editar**, **visualizar** e **deletar** livros.
