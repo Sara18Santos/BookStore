@@ -1,6 +1,6 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom'
-import Home from './pages/home.jsx';
+import Home from './pages/Home.jsx';
 import CreateBook from './pages/CreateBook.jsx';
 import ShowBook from './pages/ShowBook.jsx';
 import EditBook from './pages/EditBook.jsx';
