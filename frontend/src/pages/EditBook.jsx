@@ -17,7 +17,7 @@ const EditBook = () => {
     useEffect(() => {
         setLoading(true);
         axios
-            .get(`${import.meta.env.VITE_API_URL}/books/${id}`)
+            .get(`/api/books/${id}`)
             .then((res) => {
                 setTitle(res.data.title);
                 setAuthor(res.data.author);
