@@ -11,13 +11,6 @@ app.use(express.json());
 
 // CORS Policy
 app.use(cors());
-// app.use(
-//     cors({
-//         origin: 'http://localhost:3000',
-//         methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//         allowedHeaders: ['Content-Type'],
-//     })
-// );
 
 app.get("/", (req, res) => {
     console.log(req);
@@ -30,10 +23,10 @@ mongoose
     .connect(MONGO_URL)
     .then(() => {
         console.log("Connected to MongoDB");
-        app.listen(PORT, () => {
-            console.log(`App is listening on port: ${PORT}`);
-        });
     })
     .catch((error) => {
         console.error("MongoDB connection failed:", error.message);
     });
+
+// Adicione esta linha:
+export default app;
