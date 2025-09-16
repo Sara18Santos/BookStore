@@ -15,7 +15,7 @@ const CreateBook = () => {
         const data = { title, author, publishYear };
         setLoading(true);
         axios
-            .post('/api/books', data)
+            .post('ttp://localhost:5001/books', data)
             .then(() => {
                 setLoading(false);
                 navigate('/');
